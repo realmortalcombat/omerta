@@ -1,0 +1,726 @@
+// Privacy Policy & FAQ Pages Styles
+
+// Page Layout
+.privacy-policy-page,
+.faq-page
+  min-height: 100vh
+  position: relative
+  overflow-x: hidden
+  background: $bg-gradient-primary
+
+// Animated Background
+.page-background
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  z-index: -1
+  overflow: hidden
+
+.gradient-orb
+  position: absolute
+  border-radius: 50%
+  filter: blur(40px)
+  animation: float 8s ease-in-out infinite
+  
+  &.orb-1
+    width: 300px
+    height: 300px
+    background: radial-gradient(circle, rgba(255, 102, 0, 0.3) 0%, transparent 70%)
+    top: 10%
+    left: 10%
+    animation-delay: 0s
+  
+  &.orb-2
+    width: 400px
+    height: 400px
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%)
+    top: 60%
+    right: 10%
+    animation-delay: -3s
+  
+  &.orb-3
+    width: 250px
+    height: 250px
+    background: radial-gradient(circle, rgba(240, 147, 251, 0.25) 0%, transparent 70%)
+    bottom: 20%
+    left: 50%
+    animation-delay: -6s
+
+.floating-shapes
+  position: absolute
+  width: 100%
+  height: 100%
+  
+  .shape
+    position: absolute
+    border-radius: 50%
+    background: rgba(255, 255, 255, 0.05)
+    animation: float 12s ease-in-out infinite
+    
+    &.shape-1
+      width: 60px
+      height: 60px
+      top: 20%
+      left: 80%
+      animation-delay: -2s
+    
+    &.shape-2
+      width: 40px
+      height: 40px
+      top: 70%
+      left: 20%
+      animation-delay: -5s
+    
+    &.shape-3
+      width: 80px
+      height: 80px
+      top: 40%
+      right: 20%
+      animation-delay: -8s
+
+// Page Container
+.page-container
+  position: relative
+  z-index: 1
+  max-width: 1200px
+  margin: 0 auto
+  padding: $spacing-lg
+  opacity: 0
+  transform: translateY(30px)
+  transition: all 0.8s ease
+  
+  &.visible
+    opacity: 1
+    transform: translateY(0)
+
+// Header Styles
+.privacy-header,
+.faq-header
+  margin-bottom: $spacing-xl
+  
+  .header-content
+    text-align: center
+    
+    .back-button
+      display: inline-flex
+      align-items: center
+      gap: $spacing-xs
+      margin-bottom: $spacing-lg
+      text-decoration: none
+      color: $text-primary
+      
+      svg
+        transition: transform $transition-fast
+        
+      &:hover svg
+        transform: translateX(-4px)
+    
+    .header-main
+      .logo-section
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: $spacing-md
+        margin-bottom: $spacing-md
+        
+        img
+          border-radius: $radius-md
+          box-shadow: $shadow-lg
+        
+        .page-title
+          font-size: 3rem
+          font-weight: 700
+          margin: 0
+          
+          .gradient-text
+            @include gradient-text($primary-gradient)
+      
+      .page-subtitle
+        font-size: 1.25rem
+        color: $text-secondary
+        max-width: 600px
+        margin: 0 auto
+        line-height: 1.6
+
+// Privacy Policy Specific Styles
+.privacy-content
+  .policy-content
+    max-width: 800px
+    margin: 0 auto
+
+.toc-section
+  position: sticky
+  top: $spacing-lg
+  
+  .toc-card
+    padding: $spacing-lg
+    
+    .toc-title
+      font-size: 1.25rem
+      font-weight: 600
+      margin-bottom: $spacing-md
+      color: $text-primary
+    
+    .toc-nav
+      display: flex
+      flex-direction: column
+      gap: $spacing-sm
+      
+      .toc-link
+        color: $text-secondary
+        text-decoration: none
+        padding: $spacing-sm
+        border-radius: $radius-md
+        transition: all $transition-fast
+        font-size: 0.9rem
+        
+        &:hover
+          color: $text-primary
+          background: rgba(255, 255, 255, 0.1)
+          transform: translateX(4px)
+
+.policy-content
+  .policy-card
+    padding: $spacing-xl
+    
+    .policy-section
+      margin-bottom: $spacing-xxl
+      
+      &:last-child
+        margin-bottom: 0
+      
+      .section-title
+        font-size: 1.75rem
+        font-weight: 600
+        margin-bottom: $spacing-lg
+        color: $text-primary
+        
+        @include tablet
+          font-size: 1.5rem
+      
+      .section-content
+        .policy-text
+          font-size: 1.1rem
+          line-height: 1.7
+          color: $text-secondary
+          margin-bottom: $spacing-lg
+        
+        .privacy-highlights
+          display: grid
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+          gap: $spacing-lg
+          margin-top: $spacing-lg
+          
+          .privacy-item
+            padding: $spacing-lg
+            background: rgba(255, 255, 255, 0.05)
+            border-radius: $radius-lg
+            border: 1px solid rgba(255, 255, 255, 0.1)
+            transition: all $transition-normal
+            
+            &:hover
+              transform: translateY(-4px)
+              background: rgba(255, 255, 255, 0.08)
+            
+            h4
+              font-size: 1.1rem
+              font-weight: 600
+              color: $text-primary
+              margin-bottom: $spacing-sm
+            
+            p
+              color: $text-secondary
+              line-height: 1.6
+        
+        .data-list
+          margin: $spacing-lg 0
+          padding-left: $spacing-lg
+          
+          li
+            color: $text-secondary
+            line-height: 1.7
+            margin-bottom: $spacing-sm
+            
+            strong
+              color: $text-primary
+
+.info-grid
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  gap: $spacing-lg
+  margin-top: $spacing-lg
+  
+  .info-item
+    padding: $spacing-lg
+    background: rgba(255, 255, 255, 0.05)
+    border-radius: $radius-lg
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    transition: all $transition-normal
+    
+    &:hover
+      transform: translateY(-4px)
+      background: rgba(255, 255, 255, 0.08)
+    
+    .info-title
+      font-size: 1.1rem
+      font-weight: 600
+      color: $text-primary
+      margin-bottom: $spacing-sm
+    
+    .info-description
+      color: $text-secondary
+      line-height: 1.6
+
+.usage-list
+  display: flex
+  flex-direction: column
+  gap: $spacing-lg
+  margin-top: $spacing-lg
+  
+  .usage-item
+    display: flex
+    align-items: flex-start
+    gap: $spacing-md
+    padding: $spacing-lg
+    background: rgba(255, 255, 255, 0.05)
+    border-radius: $radius-lg
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    transition: all $transition-normal
+    
+    &:hover
+      transform: translateX(8px)
+      background: rgba(255, 255, 255, 0.08)
+    
+    .usage-icon
+      font-size: 1.5rem
+      flex-shrink: 0
+    
+    .usage-content
+      h4
+        font-size: 1.1rem
+        font-weight: 600
+        color: $text-primary
+        margin-bottom: $spacing-xs
+      
+      p
+        color: $text-secondary
+        line-height: 1.6
+
+.security-features
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+  gap: $spacing-lg
+  margin-top: $spacing-lg
+  
+  .security-item
+    text-align: center
+    padding: $spacing-lg
+    background: rgba(255, 255, 255, 0.05)
+    border-radius: $radius-lg
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    transition: all $transition-normal
+    
+    &:hover
+      transform: translateY(-4px)
+      background: rgba(255, 255, 255, 0.08)
+    
+    .security-badge
+      display: inline-block
+      padding: $spacing-xs $spacing-sm
+      background: $primary-gradient
+      color: $text-primary
+      border-radius: $radius-md
+      font-size: 0.9rem
+      font-weight: 600
+      margin-bottom: $spacing-sm
+    
+    p
+      color: $text-secondary
+      font-size: 0.9rem
+      line-height: 1.5
+
+.cookie-types,
+.providers-list,
+.rights-grid
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+  gap: $spacing-lg
+  margin-top: $spacing-lg
+  
+  .cookie-type,
+  .provider-item,
+  .right-item
+    padding: $spacing-lg
+    background: rgba(255, 255, 255, 0.05)
+    border-radius: $radius-lg
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    transition: all $transition-normal
+    
+    &:hover
+      transform: translateY(-4px)
+      background: rgba(255, 255, 255, 0.08)
+    
+    h4
+      font-size: 1.1rem
+      font-weight: 600
+      color: $text-primary
+      margin-bottom: $spacing-sm
+    
+    p
+      color: $text-secondary
+      line-height: 1.6
+
+.contact-info
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))
+  gap: $spacing-lg
+  margin-top: $spacing-lg
+  
+  .contact-item
+    padding: $spacing-lg
+    background: rgba(255, 255, 255, 0.05)
+    border-radius: $radius-lg
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    text-align: center
+    
+    h4
+      font-size: 1.1rem
+      font-weight: 600
+      color: $text-primary
+      margin-bottom: $spacing-sm
+    
+    p
+      color: $text-secondary
+      font-size: 0.9rem
+
+.privacy-footer
+  margin-top: $spacing-xxl
+  text-align: center
+  
+  .footer-content
+    .last-updated
+      color: $text-muted
+      font-size: 0.9rem
+      margin-bottom: $spacing-sm
+    
+    .footer-note
+      color: $text-secondary
+      font-size: 0.9rem
+      line-height: 1.6
+
+// FAQ Specific Styles
+.search-section
+  margin-bottom: $spacing-xl
+  
+  .search-container
+    max-width: 600px
+    margin: 0 auto
+    
+    .search-input-wrapper
+      position: relative
+      
+      .search-icon
+        position: absolute
+        left: $spacing-md
+        top: 50%
+        transform: translateY(-50%)
+        color: $text-muted
+        z-index: 1
+      
+      .search-input
+        padding-left: 3rem
+        font-size: 1.1rem
+        height: 56px
+
+.category-nav
+  margin-bottom: $spacing-xl
+  
+  .category-buttons
+    display: flex
+    justify-content: center
+    gap: $spacing-md
+    flex-wrap: wrap
+    
+    .category-btn
+      display: flex
+      align-items: center
+      gap: $spacing-sm
+      padding: $spacing-md $spacing-lg
+      background: rgba(255, 255, 255, 0.1)
+      border: 1px solid rgba(255, 255, 255, 0.2)
+      border-radius: $radius-lg
+      color: $text-secondary
+      font-weight: 600
+      cursor: pointer
+      transition: all $transition-normal
+      position: relative
+      overflow: hidden
+      
+      &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: -100%
+        width: 100%
+        height: 100%
+        background: var(--category-color)
+        opacity: 0.1
+        transition: left $transition-normal
+      
+      &:hover
+        color: $text-primary
+        border-color: var(--category-color)
+        transform: translateY(-2px)
+        
+        &::before
+          left: 0
+      
+      &.active
+        background: var(--category-color)
+        color: $text-primary
+        border-color: var(--category-color)
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3)
+        
+        &::before
+          display: none
+      
+      .category-icon
+        font-size: 1.2rem
+      
+      .category-title
+        font-size: 1rem
+
+.faq-content
+  .faq-container
+    max-width: 800px
+    margin: 0 auto
+    
+    .faq-header-section
+      text-align: center
+      margin-bottom: $spacing-xl
+      
+      .category-title
+        display: flex
+        align-items: center
+        justify-content: center
+        gap: $spacing-md
+        font-size: 2rem
+        font-weight: 600
+        color: $text-primary
+        margin-bottom: $spacing-md
+        
+        .category-icon
+          font-size: 1.5rem
+      
+      .category-description
+        color: $text-secondary
+        font-size: 1.1rem
+        line-height: 1.6
+
+.faq-list
+  display: flex
+  flex-direction: column
+  gap: $spacing-md
+
+.faq-item
+  background: rgba(255, 255, 255, 0.05)
+  border: 1px solid rgba(255, 255, 255, 0.1)
+  border-radius: $radius-lg
+  overflow: hidden
+  transition: all $transition-normal
+  
+  &:hover
+    background: rgba(255, 255, 255, 0.08)
+    border-color: rgba(255, 255, 255, 0.2)
+  
+  &.open
+    .faq-question
+      .chevron
+        transform: rotate(180deg)
+    
+    .faq-answer
+      max-height: 500px
+      opacity: 1
+      padding: $spacing-lg
+
+.faq-question
+  width: 100%
+  padding: $spacing-lg
+  background: none
+  border: none
+  color: $text-primary
+  font-size: 1.1rem
+  font-weight: 600
+  text-align: left
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: space-between
+  transition: all $transition-fast
+  
+  &:hover
+    color: $primary-color
+  
+  .question-text
+    flex: 1
+    margin-right: $spacing-md
+  
+  .chevron
+    transition: transform $transition-fast
+    color: $text-muted
+
+.faq-answer
+  max-height: 0
+  opacity: 0
+  overflow: hidden
+  transition: all $transition-normal
+  background: rgba(0, 0, 0, 0.1)
+  
+  .answer-content
+    p
+      color: $text-secondary
+      line-height: 1.7
+      margin: 0
+
+.no-results
+  text-align: center
+  padding: $spacing-xxl
+  color: $text-muted
+  
+  .no-results-icon
+    font-size: 3rem
+    margin-bottom: $spacing-md
+  
+  h3
+    font-size: 1.5rem
+    color: $text-primary
+    margin-bottom: $spacing-sm
+  
+  p
+    font-size: 1rem
+    line-height: 1.6
+
+.contact-section
+  margin-top: $spacing-xxl
+  
+  .contact-card
+    max-width: 600px
+    margin: 0 auto
+    text-align: center
+    padding: $spacing-xl
+    
+    .contact-content
+      .contact-title
+        font-size: 1.75rem
+        font-weight: 600
+        color: $text-primary
+        margin-bottom: $spacing-md
+      
+      .contact-description
+        color: $text-secondary
+        font-size: 1.1rem
+        line-height: 1.6
+        margin-bottom: $spacing-lg
+      
+      .contact-actions
+        display: flex
+        gap: $spacing-md
+        justify-content: center
+        flex-wrap: wrap
+        
+        .contact-button
+          display: inline-flex
+          align-items: center
+          gap: $spacing-sm
+          text-decoration: none
+          color: $text-primary
+          
+          &.secondary
+            background: rgba(255, 255, 255, 0.1)
+            border: 1px solid rgba(255, 255, 255, 0.2)
+            
+            &:hover
+              background: rgba(255, 255, 255, 0.2)
+
+// Responsive Design
+@include mobile
+  .page-container
+    padding: $spacing-md
+  
+  .privacy-header,
+  .faq-header
+    .header-content
+      .header-main
+        .logo-section
+          flex-direction: column
+          gap: $spacing-sm
+          
+          .page-title
+            font-size: 2rem
+  
+  .category-nav
+    .category-buttons
+      .category-btn
+        padding: $spacing-sm $spacing-md
+        font-size: 0.9rem
+  
+  .contact-section
+    .contact-card
+      .contact-content
+        .contact-actions
+          flex-direction: column
+          align-items: center
+          
+          .contact-button
+            width: 100%
+            max-width: 300px
+            justify-content: center
+
+// Animations
+@keyframes fadeInUp
+  from
+    opacity: 0
+    transform: translateY(30px)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+@keyframes slideInLeft
+  from
+    opacity: 0
+    transform: translateX(-30px)
+  to
+    opacity: 1
+    transform: translateX(0)
+
+@keyframes slideInRight
+  from
+    opacity: 0
+    transform: translateX(30px)
+  to
+    opacity: 1
+    transform: translateX(0)
+
+// Staggered animations for FAQ items
+.faq-item
+  animation: fadeInUp 0.6s ease forwards
+  
+  &:nth-child(1)
+    animation-delay: 0.1s
+  
+  &:nth-child(2)
+    animation-delay: 0.2s
+  
+  &:nth-child(3)
+    animation-delay: 0.3s
+  
+  &:nth-child(4)
+    animation-delay: 0.4s
+  
+  &:nth-child(5)
+    animation-delay: 0.5s
+  
+  &:nth-child(6)
+    animation-delay: 0.6s

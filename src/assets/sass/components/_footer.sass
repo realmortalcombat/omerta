@@ -1,0 +1,189 @@
+// Footer Component
+
+.footer
+  @include glassmorphism()
+  backdrop-filter: blur(20px)
+  -webkit-backdrop-filter: blur(20px)
+  border-top: 1px solid $glass-border
+  padding: $spacing-xl $spacing-lg
+  margin-top: auto
+  
+  @include mobile
+    padding: $spacing-lg $spacing-md
+
+.footer-content
+  max-width: 1200px
+  margin: 0 auto
+  display: grid
+  grid-template-columns: 1fr 300px 1fr
+  gap: $spacing-xl
+  align-items: start
+  
+  @include mobile
+    grid-template-columns: 1fr
+    gap: $spacing-lg
+
+.footer-section
+  @include flex-column
+  gap: $spacing-md
+
+.footer-brand-section
+  @include flex-center
+  text-align: center
+  justify-self: center
+
+.footer-section:first-child
+  justify-self: start
+  text-align: center
+
+.footer-section:last-child
+  justify-self: end
+  text-align: center
+
+.footer-brand
+  @include flex-center
+  gap: $spacing-sm
+  margin-bottom: $spacing-sm
+  transition: all $transition-fast
+  
+  &:hover
+    .footer-logo
+      transform: translateY(-2px) scale(1.05)
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4)
+      border-color: rgba(255, 102, 0, 0.3)
+      
+      &::before
+        left: 100%
+      
+      img
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4)) brightness(1.1)
+
+.footer-logo
+  width: 62.5px
+  height: 62.5px
+  @include flex-center
+  background: rgba(255, 255, 255, 0.1)
+  backdrop-filter: blur(20px)
+  -webkit-backdrop-filter: blur(20px)
+  border: 1px solid rgba(255, 255, 255, 0.2)
+  border-radius: $radius-md
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2)
+  transition: all $transition-fast
+  position: relative
+  overflow: hidden
+  
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: -100%
+    width: 100%
+    height: 100%
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)
+    transition: left 0.5s ease
+  
+  img
+    width: 50px
+    height: 50px
+    object-fit: contain
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))
+    transition: all $transition-fast
+  
+  svg
+    width: 30px
+    height: 30px
+    color: $text-primary
+
+.footer-title
+  font-size: 1.25rem
+  font-weight: 700
+  @include gradient-text()
+
+.footer-description
+  color: $text-secondary
+  font-size: 0.875rem
+  line-height: 1.6
+
+.footer-links
+  @include flex-column
+  gap: $spacing-xs
+  align-items: center
+
+.footer-link
+  color: $text-secondary
+  text-decoration: none
+  font-size: 0.875rem
+  transition: all $transition-fast
+  padding: $spacing-xs 0
+  
+  &:hover
+    color: $text-primary
+    transform: translateX(4px)
+
+.footer-section-title
+  font-size: 1rem
+  font-weight: 600
+  color: $text-primary
+  margin-bottom: $spacing-sm
+
+.social-links
+  @include flex-center
+  gap: $spacing-sm
+
+.social-link
+  @include glassmorphism()
+  width: 40px
+  height: 40px
+  border-radius: $radius-sm
+  @include flex-center
+  color: $text-secondary
+  transition: all $transition-fast
+  
+  &:hover
+    color: $text-primary
+    background: $primary-gradient
+    transform: translateY(-2px)
+    box-shadow: $shadow-md
+  
+  svg
+    width: 20px
+    height: 20px
+
+.footer-bottom
+  border-top: 1px solid $glass-border
+  margin-top: $spacing-xl
+  padding-top: $spacing-lg
+  text-align: center
+  
+  @include mobile
+    margin-top: $spacing-lg
+    padding-top: $spacing-md
+
+.copyright
+  color: $text-muted
+  font-size: 0.875rem
+  
+  a
+    color: $primary-color
+    text-decoration: none
+    
+    &:hover
+      color: $primary-light
+
+.legal-links
+  @include flex-center
+  gap: $spacing-lg
+  margin-top: $spacing-sm
+  
+  @include mobile
+    flex-direction: column
+    gap: $spacing-sm
+
+.legal-link
+  color: $text-muted
+  text-decoration: none
+  font-size: 0.875rem
+  transition: color $transition-fast
+  
+  &:hover
+    color: $text-secondary

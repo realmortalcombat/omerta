@@ -1,0 +1,197 @@
+// Widget Components
+
+.widget-container
+  max-width: 800px
+  margin: 0 auto
+  padding: $spacing-lg
+  @include flex-column
+  gap: $spacing-md
+  align-items: center
+  
+  @include mobile
+    padding: $spacing-md
+    gap: $spacing-sm
+    max-width: 100%
+
+.widget-content-area
+  @include glass-card()
+  border-radius: $radius-xl
+  overflow: hidden
+  transition: all $transition-normal
+  position: relative
+  width: 100%
+  max-width: 600px
+  box-shadow: $shadow-xl
+  backdrop-filter: blur(20px)
+  -webkit-backdrop-filter: blur(20px)
+  border: 1px solid rgba(255, 255, 255, 0.2)
+  
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, rgba(255, 133, 51, 0.05) 100%)
+    border-radius: $radius-xl
+    z-index: -1
+  
+  // Direct iframe styling when no widget-content wrapper
+  iframe
+    width: 100%
+    height: 500px
+    border: none
+    border-radius: $radius-xl
+    background: rgba(255, 255, 255, 0.02)
+    display: block
+  
+  &.minimized
+    height: 60px
+    overflow: hidden
+    
+    .widget-content
+      display: none
+    
+    .widget-header
+      border-bottom: none
+
+.widget-header
+  @include flex-between
+  padding: $spacing-md $spacing-lg
+  background: rgba(255, 255, 255, 0.05)
+  border-bottom: 1px solid $glass-border
+  
+  @include mobile
+    padding: $spacing-sm $spacing-md
+
+.provider-info
+  @include flex-center
+  gap: $spacing-sm
+
+.provider-logo
+  width: 40px
+  height: 40px
+  @include flex-center
+  background: $primary-gradient
+  border-radius: $radius-md
+  box-shadow: $shadow-sm
+  
+  svg
+    width: 24px
+    height: 24px
+    color: $text-primary
+
+.provider-details
+  h3
+    font-size: 1.25rem
+    margin-bottom: 0
+    color: $text-primary
+  
+  .provider-feature, .reward-badge
+    font-size: 0.875rem
+    color: $text-secondary
+    background: rgba(255, 102, 0, 0.1)
+    padding: 2px 8px
+    border-radius: $radius-sm
+    border: 1px solid rgba(255, 102, 0, 0.2)
+
+.widget-actions
+  @include flex-center
+  gap: $spacing-xs
+
+.minimize-btn
+  @include glassmorphism()
+  width: 32px
+  height: 32px
+  border-radius: $radius-sm
+  @include flex-center
+  color: $text-secondary
+  transition: all $transition-fast
+  
+  &:hover
+    color: $text-primary
+    background: rgba(255, 255, 255, 0.1)
+    transform: scale(1.1)
+  
+  svg
+    width: 16px
+    height: 16px
+
+.widget-content
+  padding: 0
+  
+  iframe
+    width: 100%
+    height: 500px
+    border: none
+    border-radius: 0 0 $radius-lg $radius-lg
+    background: rgba(255, 255, 255, 0.02)
+    display: block
+
+// Swap Widget Containers
+.swap-widget-container
+  @include glass-card()
+  border-radius: $radius-xl
+  overflow: hidden
+  
+  &.simpleswap-widget
+    .provider-logo
+      background: linear-gradient(135deg, #00C26F 0%, #00A85A 100%)
+  
+  &.changenow-widget
+    .provider-logo
+      background: linear-gradient(135deg, #00C26F 0%, #00A85A 100%)
+
+// Widget Loading State
+.widget-loading
+  @include flex-center
+  height: 400px
+  flex-direction: column
+  gap: $spacing-md
+  
+  .loading-spinner
+    width: 40px
+    height: 40px
+    border: 3px solid rgba(255, 255, 255, 0.1)
+    border-top: 3px solid $primary-color
+    border-radius: $radius-full
+    animation: spin 1s linear infinite
+  
+  .loading-text
+    color: $text-secondary
+    font-size: 1rem
+
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+// Widget Error State
+.widget-error
+  @include flex-center
+  height: 400px
+  flex-direction: column
+  gap: $spacing-md
+  text-align: center
+  
+  .error-icon
+    width: 60px
+    height: 60px
+    @include flex-center
+    background: rgba(255, 0, 0, 0.1)
+    border-radius: $radius-full
+    color: #ff4444
+    
+    svg
+      width: 30px
+      height: 30px
+  
+  .error-text
+    color: $text-secondary
+    font-size: 1rem
+  
+  .retry-button
+    @include glass-button()
+    margin-top: $spacing-sm

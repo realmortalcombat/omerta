@@ -1,0 +1,33 @@
+// Utility Classes
+
+// Text Utilities
+.text-primary
+  color: $text-primary
+
+.text-secondary
+  color: $text-secondary
+
+.text-muted
+  color: $text-muted
+
+.text-gradient
+  @include gradient-text()
+
+// Flexbox Utilities
+.flex-between
+  @include flex-between
+
+.flex-column
+  @include flex-column
+
+// Glassmorphism Utilities
+.glass
+  @include glassmorphism()
+
+// Custom Utilities
+.gradient-bg
+  background: $primary-gradient
+
+.gradient-border
+  border: 2px solid transparent
+  background: linear-gradient(white, white) padding-box, $primary-gradient border-box

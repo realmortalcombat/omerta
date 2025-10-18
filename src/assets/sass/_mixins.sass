@@ -1,0 +1,112 @@
+// Glassmorphism Mixin
+@mixin glassmorphism($bg: $glass-bg, $border: $glass-border, $shadow: $glass-shadow)
+  background: $bg
+  backdrop-filter: blur(20px)
+  -webkit-backdrop-filter: blur(20px)
+  border: 1px solid $border
+  box-shadow: $shadow
+
+// Gradient Text Mixin
+@mixin gradient-text($gradient: $primary-gradient)
+  background: $gradient
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+
+// Button Mixin
+@mixin glass-button($gradient: $primary-gradient, $hover-gradient: $primary-gradient-hover)
+  @include glassmorphism()
+  background: $gradient
+  border: none
+  color: $text-primary
+  font-weight: 600
+  transition: all $transition-normal
+  cursor: pointer
+  
+  &:hover
+    background: $hover-gradient
+    transform: translateY(-2px)
+    box-shadow: $shadow-lg
+  
+  &:active
+    transform: translateY(0)
+
+// Card Mixin
+@mixin glass-card($padding: $spacing-lg)
+  @include glassmorphism()
+  border-radius: $radius-lg
+  padding: $padding
+  transition: all $transition-normal
+  
+  &:hover
+    transform: translateY(-4px)
+    box-shadow: $shadow-xl
+
+// Responsive Mixins
+@mixin mobile
+  @media (max-width: $mobile)
+    @content
+
+@mixin tablet
+  @media (max-width: $tablet)
+    @content
+
+@mixin desktop
+  @media (min-width: $desktop)
+    @content
+
+@mixin wide
+  @media (min-width: $wide)
+    @content
+
+// Flexbox Mixins
+@mixin flex-center
+  display: flex
+  align-items: center
+  justify-content: center
+
+@mixin flex-between
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+@mixin flex-column
+  display: flex
+  flex-direction: column
+
+// Animation Mixins
+@mixin fade-in($duration: $transition-normal)
+  opacity: 0
+  animation: fadeIn $duration ease forwards
+
+@mixin slide-up($duration: $transition-normal)
+  transform: translateY(20px)
+  opacity: 0
+  animation: slideUp $duration ease forwards
+
+@keyframes fadeIn
+  to
+    opacity: 1
+
+@keyframes slideUp
+  to
+    transform: translateY(0)
+    opacity: 1
+
+@keyframes pulse
+  0%, 100%
+    transform: scale(1)
+  50%
+    transform: scale(1.05)
+
+@keyframes glow
+  0%, 100%
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.3)
+  50%
+    box-shadow: 0 0 30px rgba(255, 102, 0, 0.6)
+
+@keyframes float
+  0%, 100%
+    transform: translateY(0px)
+  50%
+    transform: translateY(-20px)

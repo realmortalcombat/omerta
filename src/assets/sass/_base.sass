@@ -1,0 +1,130 @@
+// Base Styles
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html
+  scroll-behavior: smooth
+
+body
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif
+  background: $bg-gradient-primary
+  min-height: 100vh
+  color: $text-primary
+  line-height: 1.6
+  overflow-x: hidden
+
+// Custom Scrollbar
+::-webkit-scrollbar
+  width: 8px
+
+::-webkit-scrollbar-track
+  background: rgba(255, 255, 255, 0.1)
+
+::-webkit-scrollbar-thumb
+  background: $primary-gradient
+  border-radius: $radius-sm
+
+::-webkit-scrollbar-thumb:hover
+  background: $primary-gradient-hover
+
+// Selection
+::selection
+  background: rgba(255, 102, 0, 0.3)
+  color: $text-primary
+
+// Focus styles
+:focus
+  outline: none
+
+:focus-visible
+  outline: 2px solid $primary-color
+  outline-offset: 2px
+
+// Typography
+h1, h2, h3, h4, h5, h6
+  font-weight: 700
+  line-height: 1.2
+  margin-bottom: $spacing-sm
+
+h1
+  font-size: 3rem
+  @include gradient-text()
+  
+  @include mobile
+    font-size: 2rem
+
+h2
+  font-size: 2.5rem
+  @include gradient-text()
+  
+  @include mobile
+    font-size: 1.75rem
+
+h3
+  font-size: 2rem
+  
+  @include mobile
+    font-size: 1.5rem
+
+h4
+  font-size: 1.5rem
+  
+  @include mobile
+    font-size: 1.25rem
+
+p
+  margin-bottom: $spacing-sm
+  color: $text-secondary
+
+// Links
+a
+  color: $primary-color
+  text-decoration: none
+  transition: color $transition-fast
+  
+  &:hover
+    color: $primary-light
+
+// Buttons
+button
+  font-family: inherit
+  border: none
+  cursor: pointer
+  transition: all $transition-fast
+  
+  &:disabled
+    opacity: 0.6
+    cursor: not-allowed
+
+// Images
+img
+  max-width: 100%
+  height: auto
+  border-radius: $radius-sm
+
+// Container
+.container
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 $spacing-md
+  
+  @include mobile
+    padding: 0 $spacing-sm
+
+// Main App Container
+#app
+  min-height: 100vh
+  @include flex-column
+
+// Main Content
+main
+  flex: 1
+  padding: $spacing-lg 0
+  @include flex-center
+  min-height: calc(100vh - 200px)
+  
+  @include mobile
+    padding: $spacing-md 0
+    min-height: calc(100vh - 150px)
